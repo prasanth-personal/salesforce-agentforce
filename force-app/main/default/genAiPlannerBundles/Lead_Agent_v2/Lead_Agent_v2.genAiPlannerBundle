@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlannerBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Automate common business tasks and assist users in their flow of work. Agentforce Employee Agent can search knowledge articles and other data sources. Customize it further to meet your employees&apos; business needs.</description>
+    <localTopicLinks>
+        <genAiPluginName>Lead_Agent_16jg5000000X5SL</genAiPluginName>
+    </localTopicLinks>
+    <localTopicLinks>
+        <genAiPluginName>agent_router_16jg5000000X5SL</genAiPluginName>
+    </localTopicLinks>
+    <localTopics>
+        <fullName>Lead_Agent_16jg5000000X5SL</fullName>
+        <canEscalate>false</canEscalate>
+        <description>Lead Agent</description>
+        <developerName>Lead_Agent_16jg5000000X5SL</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179g5000000p35W</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179g5000000p35W</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localActionLinks>
+            <functionName>Enrich_Lead_Record_179g5000000p35W</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Get_Lead_Details_179g5000000p35W</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Notify_Rep_Chatter_179g5000000p35W</functionName>
+        </localActionLinks>
+        <localActionLinks>
+            <functionName>Draft_and_Send_Outreach_Email_179g5000000p35W</functionName>
+        </localActionLinks>
+        <localActions>
+            <fullName>Get_Lead_Details_179g5000000p35W</fullName>
+            <description>Get Lead Details</description>
+            <developerName>Get_Lead_Details_179g5000000p35W</developerName>
+            <invocationTarget>Get_Lead_Details</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Get_Lead_Details</localDeveloperName>
+            <masterLabel>Get Lead Details</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Draft_and_Send_Outreach_Email_179g5000000p35W</fullName>
+            <description>Draft and Send Outreach Email</description>
+            <developerName>Draft_and_Send_Outreach_Email_179g5000000p35W</developerName>
+            <invocationTarget>Draft_and_Send_Outreach_Email</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Draft_and_Send_Outreach_Email</localDeveloperName>
+            <masterLabel>Draft and Send Outreach Email</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Enrich_Lead_Record_179g5000000p35W</fullName>
+            <description>Enrich Lead Record</description>
+            <developerName>Enrich_Lead_Record_179g5000000p35W</developerName>
+            <invocationTarget>Enrich_Lead_Record</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Enrich_Lead_Record</localDeveloperName>
+            <masterLabel>Enrich Lead Record</masterLabel>
+        </localActions>
+        <localActions>
+            <fullName>Notify_Rep_Chatter_179g5000000p35W</fullName>
+            <description>Notify Rep Chatter</description>
+            <developerName>Notify_Rep_Chatter_179g5000000p35W</developerName>
+            <invocationTarget>Notify_Rep_Chatter</invocationTarget>
+            <invocationTargetType>flow</invocationTargetType>
+            <isConfirmationRequired>false</isConfirmationRequired>
+            <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+            <localDeveloperName>Notify_Rep_Chatter</localDeveloperName>
+            <masterLabel>Notify Rep Chatter</masterLabel>
+        </localActions>
+        <localDeveloperName>Lead_Agent</localDeveloperName>
+        <masterLabel>Lead Agent</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <localTopics>
+        <fullName>agent_router_16jg5000000X5SL</fullName>
+        <canEscalate>false</canEscalate>
+        <description>This subagent is used to direct the agent across the various subagents available to this agent.</description>
+        <developerName>agent_router_16jg5000000X5SL</developerName>
+        <genAiPluginInstructions>
+            <description>You are an AI Agent.
+
+The user&apos;s current context is:
+Current App Name: {{state.currentAppName}}
+Current Object Name: {{state.currentObjectApiName}}
+Current Page Type: {{state.currentPageType}}
+Current Record ID: {{state.currentRecordId}}</description>
+            <developerName>instruction0_179g5000000p35V</developerName>
+            <language>en_US</language>
+            <masterLabel>instruction0_179g5000000p35V</masterLabel>
+            <sortOrder>1</sortOrder>
+        </genAiPluginInstructions>
+        <language>en_US</language>
+        <localDeveloperName>agent_router</localDeveloperName>
+        <masterLabel>Agent Router</masterLabel>
+        <pluginType>Topic</pluginType>
+    </localTopics>
+    <masterLabel>Lead Agent</masterLabel>
+    <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+</GenAiPlannerBundle>

@@ -1,0 +1,46 @@
+{
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "outLeadCompany" : {
+      "title" : "outLeadCompany",
+      "description" : "The name of the company associated with the retrieved lead.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "outLeadIndustry" : {
+      "title" : "outLeadIndustry",
+      "description" : "The industry or vertical market the lead's company operates in.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "outLeadName" : {
+      "title" : "outLeadName",
+      "description" : "The full name of the lead.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "outLeadScore" : {
+      "title" : "outLeadScore",
+      "description" : "The numerical score assigned to the lead indicating conversion probability.",
+      "lightning:type" : "lightning__numberType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    },
+    "outLeadTier" : {
+      "title" : "outLeadTier",
+      "description" : "The classification tier (e.g., Enterprise, Mid-Market, SMB) of the lead.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isDisplayable" : true,
+      "copilotAction:isUsedByPlanner" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
