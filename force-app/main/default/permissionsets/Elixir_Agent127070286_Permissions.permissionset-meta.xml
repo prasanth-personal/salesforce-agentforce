@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Allows custom permissions for Agentforce Agent : Elixir_Agent&apos;s agent user : elixir_agent@00dns00000t6mpn497239578.ext.</description>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>Elixir_Agent127070286 Permissions</label>
-    <license>Einstein Agent</license>
-</PermissionSet>
