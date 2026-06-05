@@ -15,7 +15,7 @@ Remove-Item -Force "$targetDir\bots\Lead_Agent\v1.botVersion-meta.xml" -ErrorAct
 Get-ChildItem -Path "$targetDir\genAiPlannerBundles" -Directory | Where-Object { $_.Name -ne "Lead_Agent_v2" } | Remove-Item -Recurse -Force
 
 # Clean flows
-$keepFlows = @("Get_Lead_Details.flow-meta.xml", "Draft_and_Send_Outreach_Email.flow-meta.xml", "Enrich_Lead_Record.flow-meta.xml", "Notify_Rep_Chatter.flow-meta.xml")
+$keepFlows = @("Get_Lead_Details.flow-meta.xml", "Draft_and_Send_Outreach_Email.flow-meta.xml", "Enrich_Lead_Record.flow-meta.xml", "Notify_Rep_Chatter.flow-meta.xml", "Lead_AI_Agent.flow-meta.xml")
 Get-ChildItem -Path "$targetDir\flows" -File | Where-Object { $keepFlows -notcontains $_.Name } | Remove-Item -Force
 
 # Clean objects
