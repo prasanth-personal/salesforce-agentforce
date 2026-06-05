@@ -4,15 +4,16 @@ This repository contains the metadata for a custom Salesforce Agentforce AI bot 
 
 ## Components Included
 
-1. **Agentforce Bot**: The `Lead_Agent` Copilot bot (v2) and its associated GenAI planner.
-2. **Email Content**: Outreach email templates used by the bot.
-3. **Flows**: The core flows triggered by the lead agent:
-   - Get Lead Details
-   - Draft and Send Outreach Email
-   - Enrich Lead Record
-   - Notify Rep Chatter
-4. **Lead Data Model**: Custom fields added to the standard Lead object.
-5. **Permissions**: The `Agentforce_Lead_Access` permission set required to run the agent.
+1. **Agentforce Bot (`Lead_Agent_v2`)**: The AI reasoning engine (Copilot) that interprets prompts and dynamically selects the right tools (Flows) to execute tasks.
+2. **Email Content (`AI_Outreach_*`)**: Pre-configured email templates containing dynamic merge fields (e.g., Name, Company) and the Calendly booking link.
+3. **Core Sub-Flows**: The individual "skills" the Agent uses to perform work:
+   - `Get_Lead_Details`: Looks up a Lead in the database.
+   - `Enrich_Lead_Record`: Updates the Lead with scoring data (`Lead_Score__c`, `Lead_Tier__c`).
+   - `Draft_and_Send_Outreach_Email`: Uses Generative AI and templates to email the prospect.
+   - `Notify_Rep_Chatter`: Posts an alert to the Sales Rep on Salesforce Chatter.
+4. **Automation Trigger (`Lead_AI_Agent`)**: A Record-Triggered Flow that listens for new Leads and automatically dispatches the Agentforce Bot in the background (Autonomous mode) to run the business workflow.
+5. **Lead Data Model**: Custom fields on the standard Lead object used to store enrichment data and Einstein Lead Scores.
+6. **Permissions (`Agentforce_Lead_Access`)**: The specific Permission Set required to grant the Agent access to Leads, Chatter, and the required Flows.
 
 ## Agent Business Workflow
 
