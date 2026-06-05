@@ -20,7 +20,8 @@
         <inputParameters>
             <name>emailTemplateId</name>
             <value>
-                <stringValue>00XNS00000QzZbN2AV</stringValue>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
+                <stringValue>00Xg5000005Nn1xEAC</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -59,7 +60,8 @@
         <inputParameters>
             <name>emailTemplateId</name>
             <value>
-                <stringValue>00XNS00000QzZMr2AN</stringValue>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
+                <stringValue>00Xg5000005Nn1zEAC</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -98,7 +100,8 @@
         <inputParameters>
             <name>emailTemplateId</name>
             <value>
-                <stringValue>00XNS00000QzZWX2A3</stringValue>
+                <inputConfiguratorMode>Custom</inputConfiguratorMode>
+                <stringValue>00Xg5000005Nn1yEAC</stringValue>
             </value>
         </inputParameters>
         <inputParameters>

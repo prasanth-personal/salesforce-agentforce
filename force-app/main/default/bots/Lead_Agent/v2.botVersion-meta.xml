@@ -124,6 +124,7 @@
     <knowledgeActionEnabled>false</knowledgeActionEnabled>
     <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
     <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
     <stopRecPrompts>false</stopRecPrompts>
     <stopWelcomePrompts>false</stopWelcomePrompts>
     <surfacesEnabled>false</surfacesEnabled>
