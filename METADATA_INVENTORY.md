@@ -126,9 +126,48 @@ All metadata from your Agentforce org has been successfully retrieved and synced
 2. **Weather_Endpoint** (`Weather_Endpoint.namedCredential-meta.xml`)
    - Purpose: Weather service API integration
 
-### Permission Sets & Groups
-- **Agentforce_Lead_Access** - Lead Agent access permissions
-- Salesforce standard permission groups (Agentforce, Commerce, Copilot, Enablement, Partner, Subscription Management)
+### Permission Sets (23 total)
+
+**Agent & MCP Related:**
+- **MCP_Access** - MCP (Model Context Protocol) access ⭐
+- **Lead_Agent_Access** - Lead Agent permissions
+- **SAP_Agent_Access** - SAP Agent permissions ⭐
+- **Service_Agent** - Service Agent permissions
+- **Service_Agent_Permissions** - Service Agent extended permissions
+- **Agentforce_Lead_Access** - Agentforce lead access
+
+**SAP Integration:** ⭐
+- **SAP_Mock_API_Access** - SAP Mock API access
+- **SAP_Perm_Set** - SAP permission set
+
+**Experience & Portal:**
+- **Coral_Cloud_Agent_Permissions** - Coral Cloud agent permissions
+- **Coral_Cloud_Portal_User** - Portal user permissions
+- **Coral_Clouds** - Coral cloud base permissions
+- **Experience_Profile_Manager** - Experience profile management
+
+**Other Access:**
+- **TH_Product_Specialist_Permissions** - Product specialist
+- **Knowledge_Manager_641851** - Knowledge manager
+- **Service_Presence_Status_Access** - Service presence
+- **NextGen_1bYg50000004CYrEAM_Permissions** - NextGen permissions (3 variants)
+- **NextGen_1bYg50000005XcrEAE_Permissions**
+- **NextGen_1bYg50000005nBNEAY_Permissions**
+
+**Salesforce Internal:**
+- **sfdc_aiplanner_service_permset** - AI Planner service
+- **sfdcInternalInt__sfdc_chatbot** - Chatbot internal
+- **sfdcInternalInt__sfdc_nc_constraints_engine_deploy** - Constraints engine
+- **sfdcInternalInt__sfdc_salesemailassistant** - Sales email assistant
+- **sfdcInternalInt__sfdc_scrt2** - Internal utility
+
+### Permission Set Groups (15+)
+- Agentforce Service Agent User
+- Commerce Shopper
+- Copilot (Salesforce Admin & User)
+- Enablement (Admin, Resources Manager, User)
+- Partner Enablement User
+- Subscription Management (11 variants: Billing, Collections, Payment, etc.)
 
 **Note:** External Credentials and Connected Apps are managed at the org level via Setup UI (not available via metadata API in this version).
 
@@ -225,10 +264,11 @@ force-app/main/default/
 | Flows | ✅ Retrieved | 18 |
 | Apex Classes | ✅ Retrieved | 50+ |
 | Named Credentials | ✅ Retrieved | 2 |
-| Permission Sets | ✅ Retrieved | 15+ |
+| Permission Sets | ✅ Retrieved | **23** ⭐ |
+| Permission Set Groups | ✅ Retrieved | 15+ |
 | Custom Objects | ✅ Retrieved | 3 + 1 (Lead) |
 | Email Templates | ✅ Retrieved | 3 |
-| **Total** | **✅ Complete** | **100+** |
+| **Total** | **✅ Complete** | **120+** |
 
 ---
 
