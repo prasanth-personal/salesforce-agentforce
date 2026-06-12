@@ -1,6 +1,8 @@
-# Lead Agent Project
+# Salesforce Agentforce: Lead + SAP Integration
 
-This repository contains the metadata for a custom Salesforce Agentforce AI bot designed to assist with lead management.
+Production-ready Salesforce Agentforce implementation with AI-powered lead management and real-time SAP inventory integration.
+
+**Status:** Phase 2 Complete — MCP Server + Apex Backend Integration Live
 
 ## Components Included
 
@@ -14,6 +16,33 @@ This repository contains the metadata for a custom Salesforce Agentforce AI bot 
 4. **Automation Trigger (`Lead_AI_Agent`)**: A Record-Triggered Flow that listens for new Leads and automatically dispatches the Agentforce Bot in the background (Autonomous mode) to run the business workflow.
 5. **Lead Data Model**: Custom fields on the standard Lead object used to store enrichment data and Einstein Lead Scores.
 6. **Permissions (`Agentforce_Lead_Access`)**: The specific Permission Set required to grant the Agent access to Leads, Chatter, and the required Flows.
+
+## SAP Inventory Agent (Phase 2)
+
+Real-time SAP integration via custom MCP Server and Apex backend — no middleware, no manual API calls.
+
+**Architecture:**
+- **Claude MCP Server** (`SalesforceSAPMCP`) — Org-specific platform endpoint
+- **Apex Service** (`SAPInventoryService`) — Typed invocable methods for SAP queries
+- **External Credentials** — OAuth 2.0 with JWT tokens + MCP scope
+- **SAP Backend** — REST API via Named Credential
+
+**What it does:**
+Sales rep asks: *"Can we ship 500 units of IPX-200 by Friday?"*
+
+Agent responds with live inventory, warehouse location, and lead time — from SAP, inside Salesforce, in seconds.
+
+**Data Model:**
+- `SAP_Product__c` — Product catalog mirror
+- `SAP_Inventory__c` — Stock levels & warehouse locations  
+- `SAP_Order__c` — Order tracking & fulfillment
+
+**Key Implementation Details:**
+- No hardcoded endpoints (Named Credentials)
+- Type-safe Apex wrappers for API responses
+- Zero Flow middleware (direct Apex → SAP)
+- OAuth PKCE + JWT-based access tokens
+- Production-ready for real S/4HANA endpoints
 
 ## Agent Business Workflow
 
@@ -34,4 +63,37 @@ The Lead Agent acts as an automated assistant for Sales teams. Here is the step-
    ```bash
    sf project deploy start
    ```
-3. Assign the `Agentforce_Lead_Access` permission set to the necessary users.
+3. Assign permission sets:
+   - `Agentforce_Lead_Access` — Lead Agent access
+   - `SAP_Agent_Access` — SAP Agent access  
+   - `MCP_Access` — MCP Server integration
+   - `SAP_Mock_API_Access` — Mock API for testing
+
+4. For SAP integration (Phase 2):
+   - Configure MCP Server credentials in Setup → External Clients Apps
+   - Update SAP endpoint in Named Credential (`SAP_Mock_API` → your S/4HANA instance)
+   - Test flow: *"Check inventory for [product name]"*
+
+## What We Built
+
+| Phase | Architecture | Outcome |
+|-------|--------------|---------|
+| Phase 1 | Agentforce → Flow → External Services → SAP | Proof of concept: agents can call APIs |
+| Phase 2 | Agentforce → MCP Server → Apex → Named Credential → SAP | Production: LLM + type-safe Apex + zero middleware |
+
+## Key Insights
+
+- **Agent = Trigger, Not Executor** — Claude extracts parameters from natural language and routes to your code. Your Apex, validation rules, and database logic all still apply.
+- **MCP is the Missing Link** — Direct agent-to-backend connection without Flow overhead. Type safety + security at the contract layer.
+- **One Checkbox Cost 40 Minutes** — "Issue JWT-based access tokens" in Connected App. OAuth setup is 90% credential config, 10% actual coding.
+- **Real API Beats Trailhead** — Build something that calls a real endpoint. You'll understand Agentforce faster than any tutorial.
+
+## Repository Structure
+
+- `force-app/main/default/` — All metadata (agents, flows, Apex, custom objects)
+- `SAPInventoryService.cls` — Apex backend for SAP queries
+- `Lead_Agent_v2/` — Agentforce agent definition + action schemas
+- `SAP_Check_Inventory_Flow_MCP.flow-meta.xml` — MCP-integrated inventory flow
+- Custom objects: `SAP_Product__c`, `SAP_Inventory__c`, `SAP_Order__c`
+
+See `METADATA_INVENTORY.md` for complete component list (38 production components).
