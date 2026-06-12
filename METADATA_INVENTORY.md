@@ -1,231 +1,109 @@
-# Salesforce Agentforce Metadata Inventory
-**Date:** 2026-06-11  
+# Salesforce Agentforce - SAP & Lead Agent Repository
+**Date:** 2026-06-12  
 **Org:** vsbejagamvijayagent@gmail.com  
-**Org ID:** 00Dg500000BLCB8EAP
+**Org ID:** 00Dg500000BLCB8EAP  
+**Status:** Production-Ready (Agent Components Only)
 
 ---
 
-## 📋 Summary
+## 📋 Overview
 
-All metadata from your Agentforce org has been successfully retrieved and synced to the local repository. Below is a complete inventory of all components.
-
----
-
-## 🤖 Agentforce Components
-
-### Bots & Agents
-- **Lead_Agent** (Bot)
-  - Location: `force-app/main/default/bots/Lead_Agent/`
-  - Version: v2
-  - Files: `Lead_Agent.bot-meta.xml`, `v2.botVersion-meta.xml`
-
-### GenAI Planner Bundles
-- **Lead_Agent_v2** (GenAI Planner Bundle)
-  - Location: `force-app/main/default/genAiPlannerBundles/Lead_Agent_v2/`
-  - Components:
-    - Agent Graph: `Lead_Agent_v2_graph.json`
-    - Agent Script: `Lead_Agent_v2_definition.agent`
-    - Local Actions: Draft & Send Email, Enrich Lead, Get Lead Details, Notify Rep
-    - Input/Output Schemas for all actions
+Cleaned and optimized repository containing only SAP Agent and Lead Agent components. All boilerplate, experience management, and portal components have been removed.
 
 ---
 
-## 🔄 Flows (SAP Agent & Lead Agent)
+## 🤖 Agent Components
 
-### SAP Inventory Flows
-- `SAP_Check_Inventory_Flow` - Standard SAP inventory check flow
-- `SAP_Check_Inventory_Flow_MCP` - MCP-integrated inventory check flow
+### Bots
+- **Lead_Agent** (`Lead_Agent.bot`)
+  - Orchestrates Lead enrichment and outreach workflows
+  - Integrates with GenAI Planner for intelligent decision-making
 
-### Lead Agent Flows
-- `Lead_AI_Agent` - Main Lead AI Agent flow
-- `Get_Lead_Details` - Retrieves lead information
-- `Enrich_Lead_Record` - Enriches lead data
-- `Draft_and_Send_Outreach_Email` - Email outreach automation
-- `Notify_Rep_Chatter` - Chatter notification flow
-
-### Supporting Flows
-- `Add_Experiences_to_Prompt` - Experience management
-- `Create_Experience_Session_Booking` - Booking flows
-- `ESA_Route_to_Queue` / `Route_to_ESA` - Queue routing
-- `Create_a_Case_Running_User` - Case creation
-- `Get_Customer_Details` - Customer data retrieval
-- `Get_Experience_Details` - Experience details
-- `Get_Sessions` - Session management
-- `Issue_Resort_Credit` / `Issue_Bulk_Resort_Credits` - Credit management
-- `PersonalizedSchedule` - Schedule personalization
-- `customer_satisfaction` - Customer satisfaction surveys
-- `discovery_call_assessment` - Discovery call assessments
-- `net_promoter_score` - NPS tracking
-
-**Total Flows:** 18
+### GenAI Planner Bundles  
+- **Lead_Agent_v2** (Lead_Agent_v2.genAiPlannerBundle)
+  - Agent Definition: `Lead_Agent_v2_definition.agent`
+  - Agent Graph: `Lead_Agent_v2_graph.json`
+  - Action Schemas: Input/output definitions for all agent actions
 
 ---
 
-## 💻 Apex Classes & Tests
+## 🔄 Flows (7 Total)
 
-### SAP-Related Classes
+### Lead Agent Workflows
+- **Lead_AI_Agent** - Main lead processing orchestration
+- **Get_Lead_Details** - Fetch lead information
+- **Enrich_Lead_Record** - AI-powered lead enrichment
+- **Draft_and_Send_Outreach_Email** - Email generation and sending
+- **Notify_Rep_Chatter** - Sales rep notifications
+
+### SAP Integration Workflows  
+- **SAP_Check_Inventory_Flow** - Standard SAP inventory queries
+- **SAP_Check_Inventory_Flow_MCP** - MCP-integrated inventory checks
+
+---
+
+## 💻 Apex Classes (2 Total)
+
+### SAP Integration Service
 - **SAPInventoryService** (`SAPInventoryService.cls`)
-  - Test Class: `SAPInventoryServiceTest.cls`
-  - Purpose: Integration with SAP systems for inventory management
-
-### LLM & AI Services
-- **LLMService** (`LLMService.cls`)
-  - Purpose: Language Model integration for AI capabilities
-
-### Weather Integration
-- **WeatherService** (`WeatherService.cls`)
-  - Test Class: `WeatherServiceTest.cls`
-  - Purpose: Weather data integration
-
-### Experience Management
-- **ExperienceBookingHelper** (`ExperienceBookingHelper.cls`)
-- **ExperienceController** (`ExperienceController.cls`)
-  - Test Class: `ExperienceControllerTest.cls`
-- **ExperienceSessionController** (`ExperienceSessionController.cls`)
-
-### Context & Data Services
-- **ContextService** (`ContextService.cls`)
-- **PersonalizedGuestExperiences** (`PersonalizedGuestExperiences.cls`)
-
-### Social Media Integration
-- **SocialMediaController** (`SocialMediaController.cls`)
-- **SocialMediaPostsController** (`SocialMediaPostsController.cls`)
-
-### Community & Authentication
-- **CommunitiesLoginController** + Test
-- **CommunitiesLandingController** + Test
-- **CommunitiesSelfRegController** + Test
-- **CommunitiesSelfRegConfirmController** + Test
-- **SiteLoginController** + Test
-- **SiteRegisterController** + Test
-- **LightningLoginFormController** + Test
-- **LightningForgotPasswordController** + Test
-- **LightningSelfRegisterController** + Test
-- **ForgotPasswordController** + Test
-- **ChangePasswordController** + Test
-- **MyProfilePageController** + Test
-- **MicrobatchSelfRegController** + Test
-
-### Data Generation & Utilities
-- **SampleDataGenerator** (`SampleDataGenerator.cls`)
-- **SampleDataTest** (`SampleDataTest.cls`)
-- **SampleBookingBatch** (`SampleBookingBatch.cls`)
-- **CheckWeather** (`CheckWeather.cls`)
-
-**Total Apex Classes:** 50+  
-**Total Test Classes:** 20+
+  - Test: `SAPInventoryServiceTest.cls`
+  - Handles SAP inventory lookups and data synchronization
 
 ---
 
 ## 🔐 Security & Credentials
 
-### Named Credentials
-1. **SAP_Mock_API** (`SAP_Mock_API.namedCredential-meta.xml`)
-   - Purpose: Mock API endpoint for SAP integration testing
+### Permission Sets (6 Total)
+- **Agentforce_Lead_Access** - Lead Agent system access
+- **Lead_Agent_Access** - Lead agent user permissions
+- **SAP_Agent_Access** - SAP agent system permissions
+- **SAP_Mock_API_Access** - Mock API access for testing
+- **SAP_Perm_Set** - Core SAP permissions
+- **MCP_Access** - MCP (Model Context Protocol) access
 
-2. **Weather_Endpoint** (`Weather_Endpoint.namedCredential-meta.xml`)
-   - Purpose: Weather service API integration
+### Named Credentials (2 Total)
+- **SAP_Mock_API** - SAP endpoint: `https://sap-api-agent.free.beeceptor.com`
+- **Weather_Endpoint** - Weather API: `https://api.brightsky.dev`
 
-### Permission Sets (23 total)
+### External Credentials (1 Total)
+- **SAP_Mock_External** - Authentication for SAP Mock API
 
-**Agent & MCP Related:**
-- **MCP_Access** - MCP (Model Context Protocol) access ⭐
-- **Lead_Agent_Access** - Lead Agent permissions
-- **SAP_Agent_Access** - SAP Agent permissions ⭐
-- **Service_Agent** - Service Agent permissions
-- **Service_Agent_Permissions** - Service Agent extended permissions
-- **Agentforce_Lead_Access** - Agentforce lead access
+### External Client Apps (1 Total)
+- **Claude_Connect_Salesforce_MCP** - MCP server integration
+  - OAuth Settings: `Claude_Connect_Salesforce_MCP_oauth.ecaOauth`
+  - OAuth Policies: `Claude_Connect_Salesforce_MCP_oauthPlcy.ecaOauthPlcy`
 
-**SAP Integration:** ⭐
-- **SAP_Mock_API_Access** - SAP Mock API access
-- **SAP_Perm_Set** - SAP permission set
-
-**Experience & Portal:**
-- **Coral_Cloud_Agent_Permissions** - Coral Cloud agent permissions
-- **Coral_Cloud_Portal_User** - Portal user permissions
-- **Coral_Clouds** - Coral cloud base permissions
-- **Experience_Profile_Manager** - Experience profile management
-
-**Other Access:**
-- **TH_Product_Specialist_Permissions** - Product specialist
-- **Knowledge_Manager_641851** - Knowledge manager
-- **Service_Presence_Status_Access** - Service presence
-- **NextGen_1bYg50000004CYrEAM_Permissions** - NextGen permissions (3 variants)
-- **NextGen_1bYg50000005XcrEAE_Permissions**
-- **NextGen_1bYg50000005nBNEAY_Permissions**
-
-**Salesforce Internal:**
-- **sfdc_aiplanner_service_permset** - AI Planner service
-- **sfdcInternalInt__sfdc_chatbot** - Chatbot internal
-- **sfdcInternalInt__sfdc_nc_constraints_engine_deploy** - Constraints engine
-- **sfdcInternalInt__sfdc_salesemailassistant** - Sales email assistant
-- **sfdcInternalInt__sfdc_scrt2** - Internal utility
-
-### Permission Set Groups (15+)
-- Agentforce Service Agent User
-- Commerce Shopper
-- Copilot (Salesforce Admin & User)
-- Enablement (Admin, Resources Manager, User)
-- Partner Enablement User
-- Subscription Management (11 variants: Billing, Collections, Payment, etc.)
-
-**Note:** External Credentials and Connected Apps are managed at the org level via Setup UI (not available via metadata API in this version).
+### MCP Server Definition (1 Total)
+- **SalesforceSAPMCP** - Salesforce MCP server definition for SAP integration
 
 ---
 
-## 📊 Custom Objects (SAP Integration)
+## 📊 Custom Objects (4 Total)
 
-### SAP_Product__c
-- Fields:
-  - `Name`
-  - `Product_Code__c`
-  - `Description__c`
+### SAP Objects
+- **SAP_Product__c** - Product catalog
+- **SAP_Inventory__c** - Inventory levels and warehouse locations
+- **SAP_Order__c** - Sales orders and fulfillment
 
-### SAP_Inventory__c
-- Fields:
-  - `SAP_Product__c` (Lookup to Product)
-  - `Quantity_Available__c`
-  - `Lead_Time_Days__c`
-  - `Warehouse_Location__c`
-
-### SAP_Order__c
-- Fields:
-  - `Account__c` (Lookup to Account)
-  - `SAP_Product__c` (Lookup to Product)
-  - `Quantity__c`
-  - `Status__c`
-  - `Estimated_Delivery_Date__c`
-
-### Lead (Standard + Custom Fields)
-- Custom Fields:
-  - `Is_Enriched__c`
-  - `Lead_Score__c`
-  - `Lead_Tier__c`
-  - `Company_Size_Bucket__c`
-  - `NumberofLocations__c`
-  - `Primary__c`
-  - `ProductInterest__c`
+### Lead Object
+- **Lead** (Custom fields only)
+  - `Is_Enriched__c` - Enrichment status flag
+  - `Lead_Score__c` - AI-calculated lead score
+  - `Lead_Tier__c` - Lead classification tier
+  - `Company_Size_Bucket__c` - Company size category
+  - `NumberofLocations__c` - Organization locations
+  - `Primary__c` - Primary contact indicator
+  - `ProductInterest__c` - Product interest tracking
+  - `CurrentGenerators__c` - Current business generators
+  - `SICCode__c` - Industry classification
 
 ---
 
-## 📧 Email Templates
+## 📧 Email Templates (3 Total)
 
-### AI Outreach Email Templates
-- `AI_Outreach_Default`
-- `AI_Outreach_Manufacturing`
-- `AI_Outreach_Technology`
-
----
-
-## 🔧 MCP Server Configuration
-
-### Integration Points
-- **SAP Inventory Flow MCP** - Enables MCP protocol integration for SAP inventory checks
-- **Flow Actions** - Flows are configured with MCP-compatible action schemas
-
-### Configuration Details
-- Action input/output schemas located in: `force-app/main/default/genAiPlannerBundles/Lead_Agent_v2/localActions/`
-- Each action has defined input and output schemas in JSON format
+- `AI_Outreach_Default` - Default outreach template
+- `AI_Outreach_Manufacturing` - Manufacturing industry template
+- `AI_Outreach_Technology` - Technology industry template
 
 ---
 
@@ -234,53 +112,100 @@ All metadata from your Agentforce org has been successfully retrieved and synced
 ```
 force-app/main/default/
 ├── bots/
-│   └── Lead_Agent/
-├── classes/ (50+ files)
-├── email/ (3 templates)
-├── flows/ (18 files)
+│   └── Lead_Agent.bot
+├── classes/
+│   ├── SAPInventoryService.cls
+│   ├── SAPInventoryService.cls-meta.xml
+│   ├── SAPInventoryServiceTest.cls
+│   └── SAPInventoryServiceTest.cls-meta.xml
+├── email/
+│   └── unfiled$public/
+│       ├── AI_Outreach_*.email
+│       └── AI_Outreach_*.email-meta.xml
+├── externalClientApps/
+│   └── Claude_Connect_Salesforce_MCP.eca-meta.xml
+├── externalCredentials/
+│   └── SAP_Mock_External.externalCredential-meta.xml
+├── extlClntAppOauthSettings/
+│   ├── Claude_Connect_Salesforce_MCP_oauth.ecaOauth
+│   └── Claude_Connect_Salesforce_MCP_oauth.ecaOauth-meta.xml
+├── extlClntAppOauthPolicies/
+│   ├── Claude_Connect_Salesforce_MCP_oauthPlcy.ecaOauthPlcy
+│   └── Claude_Connect_Salesforce_MCP_oauthPlcy.ecaOauthPlcy-meta.xml
+├── flows/
+│   ├── Lead_AI_Agent.flow-meta.xml
+│   ├── Get_Lead_Details.flow-meta.xml
+│   ├── Enrich_Lead_Record.flow-meta.xml
+│   ├── Draft_and_Send_Outreach_Email.flow-meta.xml
+│   ├── Notify_Rep_Chatter.flow-meta.xml
+│   ├── SAP_Check_Inventory_Flow.flow-meta.xml
+│   └── SAP_Check_Inventory_Flow_MCP.flow-meta.xml
 ├── genAiPlannerBundles/
 │   └── Lead_Agent_v2/
 │       ├── agentGraph/
 │       ├── agentScript/
 │       ├── localActions/
 │       └── Lead_Agent_v2.genAiPlannerBundle
-├── namedCredentials/ (2 files)
+├── mcpServerDefinitions/
+│   └── SalesforceSAPMCP.mcpServerDefinition-meta.xml
+├── namedCredentials/
+│   ├── SAP_Mock_API.namedCredential-meta.xml
+│   └── Weather_Endpoint.namedCredential-meta.xml
 ├── objects/
 │   ├── Lead/
 │   ├── SAP_Inventory__c/
 │   ├── SAP_Order__c/
 │   └── SAP_Product__c/
-└── permissionsetgroups/ (14+ files)
+└── permissionsets/
+    ├── Agentforce_Lead_Access.permissionset-meta.xml
+    ├── Lead_Agent_Access.permissionset-meta.xml
+    ├── MCP_Access.permissionset-meta.xml
+    ├── SAP_Agent_Access.permissionset-meta.xml
+    ├── SAP_Mock_API_Access.permissionset-meta.xml
+    └── SAP_Perm_Set.permissionset-meta.xml
 ```
 
 ---
 
-## ✅ Sync Status
+## ✅ Component Summary
 
-| Component | Status | Count |
-|-----------|--------|-------|
-| Bots | ✅ Retrieved | 1 |
-| GenAI Planner Bundles | ✅ Retrieved | 1 |
-| Flows | ✅ Retrieved | 18 |
-| Apex Classes | ✅ Retrieved | 50+ |
-| Named Credentials | ✅ Retrieved | 2 |
-| Permission Sets | ✅ Retrieved | **23** ⭐ |
-| Permission Set Groups | ✅ Retrieved | 15+ |
-| Custom Objects | ✅ Retrieved | 3 + 1 (Lead) |
-| Email Templates | ✅ Retrieved | 3 |
-| **Total** | **✅ Complete** | **120+** |
-
----
-
-## 📝 Next Steps
-
-1. **Review SAP Integration** - Check `SAPInventoryService.cls` for business logic
-2. **Test MCP Integration** - Validate `SAP_Check_Inventory_Flow_MCP` with your MCP server
-3. **Lead Agent Tuning** - Review `Lead_Agent_v2_definition.agent` for prompt optimization
-4. **External Credentials Setup** - Configure OAuth/auth flows via Setup UI for:
-   - Connected Apps
-   - External Credentials (for secure MCP communication)
+| Component | Count |
+|-----------|-------|
+| Bots | 1 |
+| GenAI Planner Bundles | 1 |
+| Flows | 7 |
+| Apex Classes | 2 |
+| Permission Sets | 6 |
+| Named Credentials | 2 |
+| External Credentials | 1 |
+| External Client Apps | 1 |
+| MCP Server Definitions | 1 |
+| Email Templates | 3 |
+| Custom Objects | 3 |
+| Lead Custom Fields | 9 |
+| **TOTAL** | **38** |
 
 ---
 
-**All metadata is now committed to your local repository and ready for version control.**
+## 🧹 Removed Components
+
+**Deleted:** 135 files including:
+- Boilerplate portal & community controllers
+- Experience management components
+- Weather, LLM, and context services
+- Sample data generators
+- All permission set groups
+- 30+ standard Lead object fields
+
+**Remaining:** Production-ready agent components only
+
+---
+
+## 🚀 Quick Start
+
+1. Deploy to Salesforce: `sf project deploy start -d force-app`
+2. Configure MCP server credentials in Setup
+3. Test Lead Agent via Flow UI
+4. Verify SAP inventory flow execution
+
+**Repository is clean, optimized, and ready for production.**
